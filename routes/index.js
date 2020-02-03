@@ -19,7 +19,7 @@ router.get('/index', function (req, res, next) {
   res.render('index');
 })
 
-//koneksi data
+//data connection
 router.get('/tabeldata', function(req, res, next){
   if(db != null){
     res.send('database terhubung');
@@ -28,7 +28,7 @@ router.get('/tabeldata', function(req, res, next){
   }
 });
 
-//menampilkan data
+//display data
 router.get('/data', function(req, res, next){
   db.query('SELECT * FROM tb_item', function(err, rs){
     res.render('data', {itemnya: rs});
@@ -36,26 +36,26 @@ router.get('/data', function(req, res, next){
 });
 
 
-//go to form input atau update data dinamis
+//for dynamic data input or update forms
 router.get('/inputdata', function (req, res, next) {
     res.render('inputdata', {item: {}});
 });
 
-//fungsi tambah data
+//data added function
 router.post('/inputdata', function (req, res, next) {
   db.query('INSERT INTO tb_item SET ?', req.body, function (err, rs){
     res.redirect('/data');
   })
 })
 
-//fungsi menghapus data
+//delete data function
 router.get('/hapusdata', function (req, res, next) {
   db.query('DELETE FROM tb_item WHERE id=?', req.query.id, function (err, rs) {
     res.redirect('/data');
   })
 });
 
-//go to form input atau update data dinamis
+//for dynamic data input or update forms
 router.get('/editdata', function (req, res, next) {
   db.query('SELECT * FROM tb_item WHERE id=?', req.query.id, function (err, rs) {
     res.render('inputdata', {item: rs[0]});
@@ -63,7 +63,7 @@ router.get('/editdata', function (req, res, next) {
 });
 
 
-//fungsi update data
+//data update function
 router.post('/editdata', function (req, res, next) {
   var param =[
     req.body,
