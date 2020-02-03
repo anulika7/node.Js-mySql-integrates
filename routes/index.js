@@ -28,7 +28,7 @@ router.get('/tabeldata', function(req, res, next){
   }
 });
 
-//display data
+/display data
 router.get('/data', function(req, res, next){
   db.query('SELECT * FROM tb_item', function(err, rs){
     res.render('data', {itemnya: rs});
@@ -43,7 +43,7 @@ router.get('/inputdata', function (req, res, next) {
 
 //data added function
 router.post('/inputdata', function (req, res, next) {
-  db.query('INSERT INTO tb_item SET ?', req.body, function (err, rs){
+  db.query('INSERT INTO tb_item SET ?', req,body, function (err, rs){
     res.redirect('/data');
   })
 })
@@ -69,7 +69,7 @@ router.post('/editdata', function (req, res, next) {
     req.body,
     req.query.id
   ]
-  db.query('UPDATE tb_item SET ? WHERE id=?', param, function(err, rs) {
+  db.query('UPDATE tb_item SET  WHERE id=?', param, function(err, rs) {
     res.redirect('/data');
   })
 })
