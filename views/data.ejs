@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NodeJs Express</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #f5f6f7;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .margin {
+            margin-bottom: 45px;
+        }
+
+        .bg-1 {
+            background-color: #1abc9c;
+            /* Green */
+            color: #ffffff;
+        }
+
+        .bg-2 {
+            background-color: #474e5d;
+            /* Dark Blue */
+            color: #ffffff;
+        }
+
+        .bg-3 {
+            background-color: #ffffff;
+            /* White */
+            color: #555555;
+        }
+
+        .bg-4 {
+            background-color: #2f2f2f;
+            /* Black Gray */
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+
+        .navbar-nav li a:hover {
+            color: #1abc9c !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class=" container-fluid bg-2 text-right">
+        
+        <a href="/index" style="font-weight: bolder;padding-right: 5%;" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-resize-horizontal" />
+            Kembali
+        </a>
+    </div>
+
+    <!-- Container -->
+    <a class="btn btn-primary" href="/inputdata">input data</a>
+    <div class="container-fluid bg-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Hapus Data</th>
+                    <th scope="col">Update Data</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% itemnya.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.nama %></td>
+                    <td><%= item.keterangan %></td>
+                    <td>
+                        <a class="btn btn-danger" href="hapusdata?id=<%= item.id %>"
+                            onclick="return confirm('Anda yakin ?')">Hapus</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="editdata?id=<%= item.id %>" ">Update</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class=" container-fluid bg-2 text-center">
+        <p>see @ <a href="https://getinmypage.herokuapp.com/">my Pages</a></p>
+    </footer>
+
+</body>
+
+</html>
