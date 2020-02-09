@@ -13,3 +13,5 @@ npx nodemon
 
 
 install semua paket di atas melalui terminal/cmd/windows powershell
+
+
